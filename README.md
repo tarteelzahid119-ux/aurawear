@@ -14,7 +14,7 @@ npm install
 node server.js
 
 ## 🌐 Live Link
-(Will be added after deployment)
+aurawear-production.up.railway.app
 
 ## 👩‍💻 Author
 Tarteel Zahid
