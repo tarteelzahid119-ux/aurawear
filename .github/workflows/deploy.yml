@@ -23,4 +23,4 @@ jobs:
         run: npm install
 
       - name: Run Tests
-  run: echo "Tests will be added soon"
+  run: npm test
