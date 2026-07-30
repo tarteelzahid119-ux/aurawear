@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
@@ -90,12 +91,30 @@ const verifyAdminToken = (req, res, next) => {
 
 app.post('/api/admin/login', (req, res) => {
   const { username, password } = req.body;
-  if (username === 'admin' && password === 'admin123') {
-    const token = jwt.sign({ username, role: 'admin' }, SECRET_KEY, { expiresIn: '2h' });
-    return res.json({ token, message: 'Logged in successfully' });
+
+  const admin = {
+    username: process.env.ADMIN_USERNAME,
+    password: process.env.ADMIN_PASSWORD
+  };
+
+  if (username === admin.username && password === admin.password) {
+    const token = jwt.sign(
+      { username, role: 'admin' },
+      SECRET_KEY,
+      { expiresIn: '2h' }
+    );
+
+    return res.json({
+      token,
+      message: 'Logged in successfully'
+    });
   }
-  return res.status(400).json({ message: 'Invalid credentials' });
+
+  return res.status(400).json({
+    message: 'Invalid credentials'
+  });
 });
+
 
 app.get('/api/products', (req, res) => res.json(products));
 
@@ -424,7 +443,7 @@ app.use((req, res) => {
                       <h2 className="section-title">Admin Login</h2>
                       <form onSubmit={handleAdminLogin} className="admin-form">
                         <input type="text" placeholder="Username (admin)" value={loginCreds.username} onChange={e => setLoginCreds({ ...loginCreds, username: e.target.value })} />
-                        <input type="password" placeholder="Password (admin123)" value={loginCreds.password} onChange={e => setLoginCreds({ ...loginCreds, password: e.target.value })} />
+                        <input type="password" placeholder="Password (admin)" value={loginCreds.password} onChange={e => setLoginCreds({ ...loginCreds, password: e.target.value })} />
                         <button type="submit" className="btn-primary" style={{ width: '100%' }}>Login</button>
                       </form>
                     </div>
