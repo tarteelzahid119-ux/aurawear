@@ -14,7 +14,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"username\": \"tarteel\",\r\n  \"password\": \"tarteel123\"\r\n}",
+          "raw": "{\r\n  \"username\": \"tarteel\",\r\n  \"password\": \"password\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
