@@ -237,7 +237,54 @@ app.use((req, res) => {
         .admin-form input, .admin-form textarea, .admin-form select { width: 100%; padding: 0.7rem; margin-bottom: 0.8rem; border-radius: 6px; border: 1px solid var(--border-light); background: var(--bg-primary); color: var(--text-main); }
         .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; padding: 3rem 8%; background: var(--bg-card); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); text-align: center; }
         footer { padding: 2rem 8%; text-align: center; color: var(--text-muted); font-size: 0.85rem; }
-        @media (max-width: 768px) { .hero { flex-direction: column; text-align: center; } }
+         /* MOBILE FIX START */
+@media (max-width: 768px) {
+
+  .navbar {
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 1rem;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    overflow-x: auto;
+  }
+
+  .hero {
+    flex-direction: column;
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .hero-text p {
+    font-size: 0.95rem;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-card img {
+    height: 200px;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+  }
+}
+/* MOBILE FIX END */
       </style>
     </head>
     <body>
